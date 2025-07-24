@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // optional icons
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -8,15 +8,18 @@ const Navbar = () => {
   const navLinks = ['Home', 'About', 'Projects', 'Contact'];
 
   return (
-    <nav className="bg-white shadow-md fixed w-full top-0 z-50 dark:bg-gray-900">
+    <nav className="bg-blue-950 shadow-md fixed w-full top-0 z-50 dark:bg-blue-950">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-blue-600 dark:text-white">Abdus Samad</h1>
+        <h1 className="text-2xl font-bold text-white">Abdus Samad</h1>
 
         {/* Desktop menu */}
-        <ul className="hidden md:flex space-x-6 text-gray-700 dark:text-gray-200">
+        <ul className="hidden md:flex space-x-6 text-white">
           {navLinks.map((link) => (
             <li key={link}>
-              <a href={`#${link.toLowerCase()}`} className="hover:text-blue-600">
+              <a
+                href={`#${link.toLowerCase()}`}
+                className="hover:text-blue-400 transition"
+              >
                 {link}
               </a>
             </li>
@@ -24,7 +27,7 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile menu icon */}
-        <div className="md:hidden">
+        <div className="md:hidden text-white">
           <button onClick={() => setOpen(!open)}>
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -33,12 +36,12 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <ul className="md:hidden bg-white dark:bg-gray-900 px-4 py-2 space-y-2">
+        <ul className="md:hidden bg-blue-950 px-4 py-2 space-y-2 text-white">
           {navLinks.map((link) => (
             <li key={link}>
               <a
                 href={`#${link.toLowerCase()}`}
-                className="block text-gray-800 dark:text-gray-200 hover:text-blue-600"
+                className="block hover:text-blue-400 transition"
                 onClick={() => setOpen(false)}
               >
                 {link}
