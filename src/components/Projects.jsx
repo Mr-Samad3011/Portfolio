@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Modal from './Modal'; // Create this component
+import Modal from './Modal';
 
 const projects = [
   {
     title: 'Chat App',
     description:
       'A real-time chat app built using React, Socket.io, Node.js, and JWT authentication. Includes one-to-one, group chat, and voice messaging.',
-    link: '', // No GitHub link yet
+    link: '',
     demo: '',
     inProgress: true,
   },
@@ -57,31 +57,31 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="w-full min-h-screen px-6 py-16 bg-gray-50 dark:bg-gray-800"
+      className="w-full min-h-screen px-6 py-16 bg-gray-950 dark:bg-gray-950 transition-colors duration-300"
     >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 dark:text-white mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-white dark:text-white mb-12">
           Projects
         </h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 hover:shadow-lg transition"
+              className="bg-blue-950 dark:bg-gray-900 rounded-xl shadow-md p-6 hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700"
             >
-              <h3 className="text-2xl font-semibold text-blue-600 mb-2">
+              <h3 className="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">
                 {project.title}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+              <p className="text-white dark:text-gray-300 mb-4">
                 {project.description}
               </p>
 
               {project.inProgress ? (
                 <button
                   onClick={() => handleProjectClick(project)}
-                  className="text-yellow-500 underline"
+                  className="text-yellow-600 dark:text-yellow-400 underline"
                 >
-                  Work in Progress →
+                  🚧 Work in Progress →
                 </button>
               ) : (
                 <div className="flex flex-col gap-2">
@@ -90,9 +90,9 @@ const Projects = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
                     >
-                      GitHub →
+                      🔗 GitHub →
                     </a>
                   )}
                   {project.demo && (
@@ -100,9 +100,9 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-green-600 hover:underline"
+                      className="text-green-600 dark:text-green-400 hover:underline"
                     >
-                      Live Demo →
+                      🚀 Live Demo →
                     </a>
                   )}
                 </div>
@@ -114,8 +114,8 @@ const Projects = () => {
 
       {/* Modal for "Work in Progress" */}
       {showModal && (
-        <Modal onClose={() => setShowModal(false)} title="Work in Progress">
-          <p className="text-gray-700 dark:text-gray-300">
+        <Modal onClose={() => setShowModal(false)} title="🚧 Work in Progress">
+          <p className="text-gray-800 dark:text-gray-200">
             This project is currently under development. Please check back later!
           </p>
         </Modal>
