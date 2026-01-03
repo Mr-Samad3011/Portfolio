@@ -1,9 +1,16 @@
 import React from 'react';
-import { FaInstagram, FaLinkedin, FaGithub, FaTwitter, FaWhatsapp, FaPhone } from 'react-icons/fa';
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaGithub,
+  FaTwitter,
+  FaWhatsapp,
+  FaPhone,
+} from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-200 dark:bg-gray-800 text-center text-gray-700 dark:text-gray-300 py-6">
+    <footer className="bg-gray-950 dark:bg-gray-950 text-center text-white py-6">
       <p className="text-sm">
         &copy; {new Date().getFullYear()} Abdus Samad. All rights reserved.
       </p>
@@ -12,7 +19,7 @@ const Footer = () => {
           href="https://github.com/Mr-Samad3011"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-black dark:hover:text-white"
+          className="hover:text-gray-300 transition"
         >
           <FaGithub />
         </a>
@@ -20,7 +27,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/abdus-samad-7a6864304"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-700"
+          className="hover:text-blue-400 transition"
         >
           <FaLinkedin />
         </a>
@@ -28,7 +35,7 @@ const Footer = () => {
           href="https://www.instagram.com/mr__samad1130/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-pink-600"
+          className="hover:text-pink-500 transition"
         >
           <FaInstagram />
         </a>
@@ -36,7 +43,7 @@ const Footer = () => {
           href="https://x.com/AbdusSamad75624"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-500"
+          className="hover:text-blue-400 transition"
         >
           <FaTwitter />
         </a>
@@ -44,13 +51,13 @@ const Footer = () => {
           href="https://wa.me/919519770595"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-green-600"
+          className="hover:text-green-500 transition"
         >
           <FaWhatsapp />
         </a>
         <a
           href="tel:+919519770595"
-          className="hover:text-green-800"
+          className="hover:text-green-400 transition"
         >
           <FaPhone />
         </a>
