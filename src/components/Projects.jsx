@@ -6,6 +6,7 @@ const projects = [
     title: 'Chat App',
     description:
       'A real-time chat app built using React, Socket.io, Node.js, and JWT authentication. Includes one-to-one chat, group chat, voice messaging, authentication, secure APIs, and scalable backend architecture.',
+    status: 'In Progress',
     inProgress: true,
   },
   {
@@ -14,6 +15,7 @@ const projects = [
       'A full-stack platform to connect and empower rural communities. Features include forum posts, local services, authentication, protected routes, and a responsive UI built with modern technologies.',
     link: 'https://github.com/Mr-Samad3011/code_core_internship/blob/main/villageConnect_day_35_.zip',
     demo: 'https://villageconect.netlify.app',
+    status: 'Completed',
   },
   {
     title: 'United Index',
@@ -21,26 +23,36 @@ const projects = [
       'United Index is a web platform where United College students can generate their own personal index page. Built using React (Vite) and Tailwind CSS with a clean, responsive, and modern UI.',
     link: 'https://github.com/Mr-Samad3011/United_Abdus_index_template',
     demo: 'https://unitedindexabdus.netlify.app/',
+    status: 'Completed',
   },
   {
     title: 'Chatbot',
     description:
       'An AI-powered chatbot built using JavaScript that interacts with users through predefined logic and dynamic responses.',
     link: 'https://github.com/Mr-Samad3011/chatbot1',
+    status: 'Completed',
   },
   {
     title: 'Hospital Management System (Java Swing)',
     description:
       'A desktop-based Java Swing application for managing hospital patient records, appointments, doctors, and staff efficiently.',
     link: 'https://github.com/Mr-Samad3011/hospital-management-java',
+    status: 'Completed',
   },
   {
     title: 'Resume Builder (PHP)',
     description:
       'A PHP-based web application that allows users to enter their details and generate professional resumes in PDF format.',
     link: 'https://github.com/Mr-Samad3011/resume_builder',
+    status: 'Completed',
   },
-  { title: 'Internship Assignments (Code Core Global)', description: 'Collection of full-stack projects and tasks completed during internship at Code Core Global.', link: 'https://github.com/Mr-Samad3011/code_core_internship', },
+  {
+    title: 'Internship Assignments (Code Core Global)',
+    description:
+      'Collection of full-stack projects and tasks completed during internship at Code Core Global.',
+    link: 'https://github.com/Mr-Samad3011/code_core_internship',
+    status: 'Completed',
+  },
 ];
 
 const Projects = () => {
@@ -66,8 +78,20 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-900 rounded-xl p-6 border border-gray-700 hover:shadow-xl transition-all flex flex-col"
+              className="bg-gray-900 rounded-xl p-6 border border-gray-700 hover:shadow-xl transition-all flex flex-col relative"
             >
+              {/* 🔹 Status Badge */}
+              <span
+                className={`absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full
+                  ${
+                    project.status === 'In Progress'
+                      ? 'bg-yellow-500/20 text-yellow-400'
+                      : 'bg-green-500/20 text-green-400'
+                  }`}
+              >
+                {project.status}
+              </span>
+
               <h3 className="text-xl font-semibold text-blue-400 mb-2">
                 {project.title}
               </h3>
@@ -94,6 +118,18 @@ const Projects = () => {
           title={selectedProject.title}
           onClose={() => setShowModal(false)}
         >
+          {/* Status inside modal */}
+          <span
+            className={`inline-block mb-4 text-xs font-semibold px-3 py-1 rounded-full
+              ${
+                selectedProject.status === 'In Progress'
+                  ? 'bg-yellow-500/20 text-yellow-400'
+                  : 'bg-green-500/20 text-green-400'
+              }`}
+          >
+            {selectedProject.status}
+          </span>
+
           <p className="text-gray-200 leading-relaxed">
             {selectedProject.description}
           </p>
