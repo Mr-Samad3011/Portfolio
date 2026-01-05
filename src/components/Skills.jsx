@@ -119,6 +119,23 @@ const Skills = () => {
             </ul>
           </motion.div>
 
+          {/* Language */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">
+              Language
+            </h3>
+            <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>Python</li>
+              
+            </ul>
+          </motion.div>
+
           {/* Backend */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
