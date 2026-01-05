@@ -19,7 +19,7 @@ import {
 } from "react-icons/fa";
 import { SiMongodb, SiMysql, SiPostman, SiTailwindcss } from "react-icons/si";
 
-// 🔹 Bubble icons
+/* 🔹 Tech Icons */
 const icons = [
   <FaReact />,
   <FaJsSquare />,
@@ -38,34 +38,37 @@ const icons = [
   <FaTools />,
 ];
 
-// 🔹 Floating Bubble Component (Memoized so it won't re-render)
-const FloatingBubble = memo(({ icon }) => {
-  const randomX = Math.random() * 100; // initial horizontal %
-  const randomY = Math.random() * 100; // initial vertical %
-  const size = 30 + Math.random() * 40; // 30-70px
-  const opacity = 0.1 + Math.random() * 0.3; // 0.1 - 0.4
-  const duration = 10 + Math.random() * 10; // 60-140s
-  const rotateAngle = 10 + Math.random() * 10; // slow rotation
+/* 🔹 Floating Bubble (memoized for performance) */
+const FloatingBubble = memo(() => {
+  const icon = icons[Math.floor(Math.random() * icons.length)];
+  const startX = Math.random() * 100;
+  const startY = Math.random() * 100;
+  const size = 20 + Math.random() * 50;
+  const opacity = 0.15 + Math.random() * 0.35;
+  const duration = 40 + Math.random() * 60;
+  const rotateAngle = 20 + Math.random() * 40;
+  const xDelta = 10 + Math.random() * 20;
+  const yDelta = 10 + Math.random() * 20;
 
   return (
     <motion.div
       className="absolute text-blue-400"
       style={{
-        left: `${randomX}%`,
-        top: `${randomY}%`,
+        left: `${startX}%`,
+        top: `${startY}%`,
         fontSize: `${size}px`,
-        opacity: opacity,
+        opacity,
         pointerEvents: "none",
       }}
       animate={{
-        x: [-15, 15, -15],
-        y: [-10, 10, -10],
-        rotate: [0, rotateAngle, 0],
+        x: [0, xDelta, 0, -xDelta, 0],
+        y: [0, yDelta, 0, -yDelta, 0],
+        rotate: [0, rotateAngle, -rotateAngle, rotateAngle, 0],
       }}
       transition={{
-        duration: duration,
+        duration,
         repeat: Infinity,
-        ease: "linear",
+        ease: "easeInOut",
       }}
     >
       {icon}
@@ -92,7 +95,7 @@ const Hero = () => {
 
   const [descText] = useTypewriter({
     words: [
-      "I’m passionate about building efficient, scalable, and user-friendly web applications using the MERN stack. I focus on writing clean code, intuitive UI/UX, and solving real-world problems. I love learning new technologies and building meaningful software solutions.",
+      "I’m passionate about building efficient, scalable, and user-friendly web applications using the MERN stack. I focus on clean code, intuitive UI/UX, and solving real-world problems.",
     ],
     loop: true,
     typeSpeed: 40,
@@ -100,15 +103,17 @@ const Hero = () => {
     delaySpeed: 2500,
   });
 
+  const bubbleCount = 25;
+
   return (
     <section
       id="home"
       className="w-full min-h-screen flex items-center justify-center bg-gray-950 px-6 py-12 relative overflow-hidden"
     >
-      {/* 🔵 AUTO FLOATING BUBBLES (independent of typewriter) */}
+      {/* 🔵 Floating Background Icons */}
       <div className="absolute inset-0 overflow-hidden">
-        {icons.map((icon, index) => (
-          <FloatingBubble key={index} icon={icon} />
+        {Array.from({ length: bubbleCount }).map((_, index) => (
+          <FloatingBubble key={index} />
         ))}
       </div>
 
