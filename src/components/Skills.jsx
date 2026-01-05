@@ -121,20 +121,23 @@ const Skills = () => {
 
           {/* Language */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ delay: 0.1 }}
+            className="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 transition"
           >
-            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">
+            <h3 className="text-xl font-semibold text-blue-400 mb-4">
               Language
             </h3>
-            <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+            <ul className="space-y-2 text-gray-300">
               <li>Java</li>
               <li>JavaScript</li>
-              <li>Python</li>
+              <li>Python </li>
               
             </ul>
           </motion.div>
+
+          
 
           {/* Backend */}
           <motion.div
